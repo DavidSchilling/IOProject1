@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class IOController
 {
 	/**
-	 * 
+	 * An IO frame for the GUI portion of the project.
 	 */
 	private IOFrame appFrame;
 
@@ -24,20 +24,23 @@ public class IOController
 	private ArrayList<Game> projectGames;
 
 	/**
-	 * 
+	 * Just a constructor.
 	 */
 	public IOController()
 	{
 
 	}
 
+	/**
+	 * @return projectGames
+	 */
 	public ArrayList<Game> getProjectGames()
 	{
 		return projectGames;
 	}
 
 	/**
-	 * 
+	 * This is where the real code starts.
 	 */
 	public void start()
 	{
@@ -92,8 +95,8 @@ public class IOController
 
 	/**
 	 * 
-	 * @param toBeParsed
-	 * @return
+	 * @param toBeParsed A String that will be changed into an integer.
+	 * @return If the toBeParsed isn't an integer, it returns a boolean that is false.
 	 */
 	private boolean checkNumberFormat(String toBeParsed)
 	{
@@ -112,8 +115,8 @@ public class IOController
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Reads the file from the save file.
+	 * @return currentGame.
 	 */
 	public Game readGameInformation()
 	{
@@ -146,6 +149,10 @@ public class IOController
 		return currentGame;
 	}
 
+	/**
+	 * Reads all the game information.
+	 * @return fileContents
+	 */
 	public String readAllGameInformation()
 	{
 		String fileContents = "";
@@ -171,7 +178,7 @@ public class IOController
 	}
 
 	/**
-	 * 
+	 * Converts the save file to a game.
 	 * @param currentInfo
 	 */
 	private void convertTextToGames(String currentInfo)
@@ -251,14 +258,14 @@ public class IOController
 		{
 			gameWriter = new PrintWriter(saveFile);
 
-			gameWriter.append(currentGame.getGameTitle());
-			gameWriter.append(Integer.toString(currentGame.getFunRanking()));
+			gameWriter.append(currentGame.getGameTitle() + "\r\n");
+			gameWriter.append(Integer.toString(currentGame.getFunRanking()) + "\r\n");
 			for (int count = 0; count < currentGame.getGameRules().size(); count++)
 			{
-				gameWriter.append(currentGame.getGameRules().get(count));
+				gameWriter.append(currentGame.getGameRules().get(count) + "\r\n");
 			}
 
-			gameWriter.println(";"); // Allows us to later split the game around
+			gameWriter.append(";" + "\r\n"); // Allows us to later split the game around
 										// that character.
 
 			gameWriter.close();

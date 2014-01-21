@@ -1,10 +1,16 @@
 package io.controller;
 
+/**
+ * Just starts the code.
+ * @author David Schilling
+ *
+ */
 public class IORunner
 {
 
 	/**
-	 * @param args
+	 * This starts the code.
+	 * @param args this is unused.
 	 */
 	public static void main(String[] args)
 	{
